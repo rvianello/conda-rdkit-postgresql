@@ -1,0 +1,31 @@
+{% set name = "rdkit-postgresql" %}
+{% set version = "2022.09.3" %}
+{% set filename = "Release_%s.tar.gz" % version.replace(".", "_") %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ filename }}
+  url: https://github.com/rdkit/rdkit/archive/{{ filename }}
+  sha256: 188239f741842ce433b371e94cdd9e4d93955b332b9ffd5a70db2884270e261b
+
+build:
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+  host:
+    - boost-cpp
+    - eigen
+    - postgresql {{ postgresql }}
+    - freetype
+  run:
+    - boost-cpp
+    - postgresql
+    - freetype
