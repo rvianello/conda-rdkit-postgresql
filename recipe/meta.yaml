@@ -26,6 +26,6 @@ requirements:
     - postgresql {{ postgresql }}
     - freetype
   run:
-    - boost-cpp
-    - postgresql
+    - {{ pin_compatible('boost-cpp', max_pin='x.x') }}
+    - {{ pin_compatible('postgresql', max_pin='x.x') }}
     - freetype
