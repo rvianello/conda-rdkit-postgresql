@@ -1,0 +1,9 @@
+name: conda-build
+run-name: ${{ github.actor }} is running a conda build
+on: [push]
+jobs:
+  conda-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo Hello World
