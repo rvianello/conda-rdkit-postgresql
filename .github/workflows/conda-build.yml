@@ -33,6 +33,6 @@ jobs:
       - name: Run conda info
         run: |
           conda config --set always_yes yes
-          conda install conda-build conda-verify anaconda-client
+          mamba install -q conda-build conda-verify anaconda-client
           conda config --set anaconda_upload yes
           conda info
