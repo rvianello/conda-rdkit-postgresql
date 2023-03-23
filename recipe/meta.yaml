@@ -1,5 +1,5 @@
 {% set name = "rdkit-postgresql" %}
-{% set version = "2022.09.3" %}
+{% set version = "2022.09.5" %}
 {% set filename = "Release_%s.tar.gz" % version.replace(".", "_") %}
 
 package:
@@ -9,7 +9,7 @@ package:
 source:
   fn: {{ filename }}
   url: https://github.com/rdkit/rdkit/archive/{{ filename }}
-  sha256: 188239f741842ce433b371e94cdd9e4d93955b332b9ffd5a70db2884270e261b
+  sha256: 2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1
 
 build:
   number: 0

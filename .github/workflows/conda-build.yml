@@ -34,5 +34,8 @@ jobs:
         run: |
           conda config --set always_yes yes
           mamba install -q conda-build conda-verify anaconda-client
-          conda config --set anaconda_upload yes
+          conda config --set anaconda_upload no
           conda info
+      # Build and package the RDKit extension for PostgreSQL
+      - name: Run conda build
+        run: conda build recipe
