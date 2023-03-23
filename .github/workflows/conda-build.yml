@@ -5,6 +5,9 @@ jobs:
   package:
     name: package for ${{ matrix.config.platform }}
     runs-on: ${{ matrix.config.os }}
+    defaults:
+      run:
+        shell: ${{ matrix.config.shell}}
     strategy:
       fail-fast: false
       matrix:
@@ -28,7 +31,6 @@ jobs:
           activate-environment: ""
       # Display some diagnostic info and configure the conda installation
       - name: Run conda info
-        shell: ${{ matrix.config.shell}}
         run: |
           conda config --set always_yes yes
           conda install conda-build conda-verify anaconda-client
