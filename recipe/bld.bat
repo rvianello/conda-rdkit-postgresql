@@ -33,7 +33,7 @@ cmake ^
 if errorlevel 1 exit 1
 
 echo ">>> Build"
-cmake --build . --parallel %CPU_COUNT% --config Release
+cmake --build . --parallel %CPU_COUNT%
 if errorlevel 1 exit 1
 
 echo ">>> Output the contents of the extension installation script"
