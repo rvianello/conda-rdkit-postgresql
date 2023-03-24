@@ -1,7 +1,7 @@
-diff --git a/Code/PgSQL/rdkit/CMakeLists.txt b/Code/PgSQL/rdkit/CMakeLists.txt
+diff --git Code/PgSQL/rdkit/CMakeLists.txt Code/PgSQL/rdkit/CMakeLists.txt
 index 3123f31ca..3803691e2 100644
---- a/Code/PgSQL/rdkit/CMakeLists.txt
-+++ b/Code/PgSQL/rdkit/CMakeLists.txt
+--- Code/PgSQL/rdkit/CMakeLists.txt
++++ Code/PgSQL/rdkit/CMakeLists.txt
 @@ -238,11 +238,11 @@ string(REPLACE " " ";" tokList ${PG_EXTVERSION})
  list(GET tokList -1 PG_EXTVERSION)
  string(REGEX REPLACE "'" "" PG_EXTVERSION ${PG_EXTVERSION})
