@@ -40,6 +40,9 @@ echo ">>> Output the contents of the extension installation script"
 type %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
+dir %SRC_DIR%\build\Code\PgSQL\rdkit\
+dir %SRC_DIR%\build\Code\PgSQL\rdkit\Release
+
 echo ">>> Run the extension installation script"
 %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
