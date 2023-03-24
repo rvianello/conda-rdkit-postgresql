@@ -36,6 +36,10 @@ echo ">>> Build"
 cmake --build . --parallel %CPU_COUNT% --config Release
 if errorlevel 1 exit 1
 
+echo ">>> Output the contents of the extension installation script"
+type %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
+if errorlevel 1 exit 1
+
 echo ">>> Run the extension installation script"
 %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
