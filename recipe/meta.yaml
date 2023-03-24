@@ -1,15 +1,14 @@
 {% set name = "rdkit-postgresql" %}
 {% set version = "2022.09.5" %}
-{% set filename = "Release_%s.tar.gz" % version.replace(".", "_") %}
+{% set git_rev = "Release_2022_09_5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ filename }}
-  url: https://github.com/rdkit/rdkit/archive/{{ filename }}
-  sha256: 2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1
+  git_url: https://github.com/rdkit/rdkit.git
+  git_rev: {{ git_rev }}
   patches:
     - CMakeLists.txt.patch  # [win]
 
