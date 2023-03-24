@@ -12,11 +12,14 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - os: ubuntu-latest
-            platform: linux-64
-            shell: bash -el {0}
-          - os: macos-latest
-            platform: osx-64
+          #- os: ubuntu-latest
+          #  platform: linux-64
+          #  shell: bash -el {0}
+          #- os: macos-latest
+          #  platform: osx-64
+          #  shell: bash -el {0}
+          - os: windows-latest
+            platform: win-64
             shell: bash -el {0}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
