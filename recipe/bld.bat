@@ -4,6 +4,8 @@ rmdir /S /Q %SRC_DIR%\pgdata
 mkdir %SRC_DIR%\build
 mkdir %SRC_DIR%\pgdata
 
+cd %SRC_DIR%\build
+
 cmake ^
     -D CMAKE_POLICY_DEFAULT_CMP0074=NEW ^
     -D RDK_BUILD_PGSQL=ON ^
@@ -26,6 +28,31 @@ cmake ^
     -D Boost_NO_BOOST_CMAKE=ON ^
     -D CMAKE_BUILD_TYPE=Release ^
     %SRC_DIR%
-
 if errorlevel 1 exit 1
 
+cmake --build . --parallel %CPU_COUNT% --config Release
+if errorlevel 1 exit 1
+
+cd %SRC_DIR%\build\Code\PgSQL\rdkit
+if errorlevel 1 exit 1
+
+pgsql_install.bat
+if errorlevel 1 exit 1
+
+set PGPORT=54321
+set PGDATA=%SRC_DIR%\pgdata
+
+pg_ctl initdb
+if errorlevel 1 exit 1
+
+pg_ctl start -l $PGDATA/log.txt
+if errorlevel 1 exit 1
+
+timeout 2 /NOBREAK
+
+ctest --output-on-failure
+if errorlevel 1 set TEST_ERROR=1
+
+pg_ctl stop
+
+if %TEST_ERROR% equ 1 exit 1
