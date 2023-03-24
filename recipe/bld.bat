@@ -6,6 +6,7 @@ mkdir %SRC_DIR%\pgdata
 
 cd %SRC_DIR%\build
 
+echo ">>> Configure CMake"
 cmake ^
     -G "NMake Makefiles JOM" ^
     -D CMAKE_POLICY_DEFAULT_CMP0074=NEW ^
@@ -31,29 +32,32 @@ cmake ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 
+echo ">>> Build"
 cmake --build . --parallel %CPU_COUNT% --config Release
 if errorlevel 1 exit 1
 
-cd %SRC_DIR%\build\Code\PgSQL\rdkit
-if errorlevel 1 exit 1
-
-pgsql_install.bat
+echo ">>> Run the extension installation script"
+%SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
 set PGPORT=54321
 set PGDATA=%SRC_DIR%\pgdata
 
+echo ">>> Initialize a PostgreSQL cluster directory"
 pg_ctl initdb
 if errorlevel 1 exit 1
 
+echo ">>> Start PostgreSQL"
 pg_ctl start -l $PGDATA/log.txt
 if errorlevel 1 exit 1
 
 timeout 2 /NOBREAK
 
+echo ">>> Run the tests"
 ctest --output-on-failure
 if errorlevel 1 set TEST_ERROR=1
 
+echo ">>> Stop PostgreSQL"
 pg_ctl stop
 
 if %TEST_ERROR% equ 1 exit 1
