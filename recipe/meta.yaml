@@ -10,6 +10,8 @@ source:
   fn: {{ filename }}
   url: https://github.com/rdkit/rdkit/archive/{{ filename }}
   sha256: 2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1
+  patches:
+    - CMakeLists.txt.patch  # [win]
 
 build:
   number: 0

@@ -8,7 +8,7 @@ cd %SRC_DIR%\build
 
 echo ">>> Configure CMake"
 cmake ^
-    -G "NMake Makefiles" ^
+    -G "NMake Makefiles JOM" ^
     -D CMAKE_POLICY_DEFAULT_CMP0074=NEW ^
     -D RDK_BUILD_PGSQL=ON ^
     -D RDK_PGSQL_STATIC=ON ^
