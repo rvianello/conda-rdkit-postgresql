@@ -20,6 +20,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
+    - jom  # [win]
   host:
     - boost-cpp
     - eigen
