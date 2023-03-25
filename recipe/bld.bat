@@ -48,7 +48,7 @@ set PGPORT=54321
 set PGDATA=%SRC_DIR%\pgdata
 
 echo ">>> Initialize a PostgreSQL cluster directory"
-pg_ctl initdb
+pg_ctl initdb --debug
 if errorlevel 1 exit 1
 
 echo ">>> Start PostgreSQL"
