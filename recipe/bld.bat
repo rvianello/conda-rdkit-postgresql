@@ -44,11 +44,11 @@ echo ">>> Run the extension installation script"
 call %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
-set PGPORT=54321
+set PGPORT=4321
 set PGDATA=%SRC_DIR%\pgdata
 
 echo ">>> Initialize a PostgreSQL cluster directory"
-initdb --debug
+initdb --debug -D %PGDATA%
 if errorlevel 1 exit 1
 
 echo ">>> Start PostgreSQL"
