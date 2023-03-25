@@ -48,11 +48,11 @@ set PGPORT=54321
 set PGDATA=%SRC_DIR%\pgdata
 
 echo ">>> Initialize a PostgreSQL cluster directory"
-initdb $PGDATA
+initdb %PGDATA%
 if errorlevel 1 exit 1
 
 echo ">>> Start PostgreSQL"
-pg_ctl start -l $PGDATA/log.txt
+pg_ctl start -l %PGDATA%\log.txt
 if errorlevel 1 exit 1
 
 timeout 2 /NOBREAK
