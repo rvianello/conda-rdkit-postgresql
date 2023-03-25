@@ -1,5 +1,5 @@
 diff --git Code/PgSQL/rdkit/CMakeLists.txt Code/PgSQL/rdkit/CMakeLists.txt
-index 3123f31ca..3803691e2 100644
+index 3123f31ca..545c980c5 100644
 --- Code/PgSQL/rdkit/CMakeLists.txt
 +++ Code/PgSQL/rdkit/CMakeLists.txt
 @@ -238,11 +238,11 @@ string(REPLACE " " ";" tokList ${PG_EXTVERSION})
@@ -17,12 +17,18 @@ index 3123f31ca..3803691e2 100644
  endif(MSVC)
  if(${PostgreSQL_VERSION_STRING} VERSION_LESS 9.5)
      set(RDKIT_PG_BFP_GIST_FETCH "")
-@@ -265,7 +265,7 @@ endif(${PostgreSQL_VERSION_STRING} VERSION_LESS 9.6)
+@@ -265,7 +265,13 @@ endif(${PostgreSQL_VERSION_STRING} VERSION_LESS 9.6)
  
  configure_file("${PG_CURRENT_SOURCE_DIR}${EXTENSION}.sql.in"
                 "${PG_CURRENT_BINARY_DIR}${EXTENSION}--${PG_EXTVERSION}.sql")
 -file(GLOB files "update_sql/*.in")
-+file(GLOB_RECURSE files "update_sql/*.in")
++set(files 
++    "${PG_CURRENT_SOURCE_DIR}/update_sql/rdkit--3.8--4.0.sql.in"
++    "${PG_CURRENT_SOURCE_DIR}/update_sql/rdkit--4.0--4.0.1.sql.in"
++    "${PG_CURRENT_SOURCE_DIR}/update_sql/rdkit--4.0.1--4.1.sql.in"
++    "${PG_CURRENT_SOURCE_DIR}/update_sql/rdkit--4.1--4.1.1.sql.in"
++    "${PG_CURRENT_SOURCE_DIR}/update_sql/rdkit--4.1.1--4.2.sql.in"
++    )
  foreach(file ${files})
    string(REPLACE ".in" "" output_name ${file})
    string(REPLACE "${PG_CURRENT_SOURCE_DIR}" "${PG_CURRENT_BINARY_DIR}" output_name ${output_name})
