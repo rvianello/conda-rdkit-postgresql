@@ -41,7 +41,7 @@ type %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
 echo ">>> Run the extension installation script"
-%SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
+call %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
 set PGPORT=54321
