@@ -1,7 +1,7 @@
 rmdir /S /Q %SRC_DIR%\build
 
 mkdir %SRC_DIR%\build
-mkdir %SRC_DIR%\build\pgdata
+::mkdir %SRC_DIR%\build\pgdata
 
 set PGPORT=4321
 set PGDATA=%SRC_DIR%\build\pgdata
