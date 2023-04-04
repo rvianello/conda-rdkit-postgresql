@@ -47,7 +47,7 @@ echo ">>> Run the extension installation script"
 if errorlevel 1 exit 1
 
 echo ">>> Initialize a PostgreSQL cluster directory"
-initdb --debug -D %PGDATA%
+pg_ctl initdb -D %PGDATA%
 if errorlevel 1 exit 1
 
 echo ">>> Start PostgreSQL"
