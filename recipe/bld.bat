@@ -33,15 +33,20 @@ cmake ^
 if errorlevel 1 exit 1
 
 echo ">>> Build"
-cmake --build . --parallel %CPU_COUNT%
+::cmake --build . --parallel %CPU_COUNT%
 if errorlevel 1 exit 1
 
 echo ">>> Output the contents of the extension installation script"
-type %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
+::type %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
 if errorlevel 1 exit 1
 
 echo ">>> Run the extension installation script"
-call %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
+::call %SRC_DIR%\build\Code\PgSQL\rdkit\pgsql_install.bat
+if errorlevel 1 exit 1
+
+echo ">>> Output some info"
+where initdb
+where pg_ctl
 if errorlevel 1 exit 1
 
 set PGPORT=4321
