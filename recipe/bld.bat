@@ -1,11 +1,10 @@
-set PGPORT=4321
-set PGDATA=%SRC_DIR%\pgdata
-
 rmdir /S /Q %SRC_DIR%\build
-rmdir /S /Q %SRC_DIR%\pgdata
 
 mkdir %SRC_DIR%\build
-mkdir %SRC_DIR%\pgdata
+mkdir %SRC_DIR%\build\pgdata
+
+set PGPORT=4321
+set PGDATA=%SRC_DIR%\build\pgdata
 
 cd %SRC_DIR%\build
 
